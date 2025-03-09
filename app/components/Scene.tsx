@@ -29,17 +29,19 @@ function OfficeScene() {
 
       <OrbitControls 
         enableDamping={true}
-        dampingFactor={0.1}
+        dampingFactor={0.05}
         rotateSpeed={0.5}
         enablePan={true}
         panSpeed={0.5}
         enableZoom={true}
-        zoomSpeed={0.8}
-        minDistance={2}
-        maxDistance={15}
+        zoomSpeed={0.5}
+        minDistance={0.1}
+        maxDistance={100}
         minPolarAngle={0}
         maxPolarAngle={Math.PI / 2}
         target={[0, 0, 0]}
+        enableZoomLock={true}
+        zoomToCursor={true}
       />
     </>
   )
@@ -65,14 +67,16 @@ export default function Scene() {
         camera={{ 
           position: [5, 3, 5], 
           fov: 45,
-          near: 0.1,
-          far: 1000
+          near: 0.01,
+          far: 1000,
+          zoom: 1
         }}
         shadows
         dpr={[1, 2]}
         gl={{ 
           antialias: true,
-          alpha: false 
+          alpha: false,
+          preserveDrawingBuffer: true
         }}
       >
         <color attach="background" args={['#f0f0f0']} />
